@@ -9,6 +9,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "2.11.0"
+  background_mode_new:
+    dependency: "direct main"
+    description:
+      name: background_mode_new
+      sha256: e3c65da8c02cde659026a0b639214db1bc9ec7988834b5aa1b8bedc39215899e
+      url: "https://pub.dev"
+    source: hosted
+    version: "1.0.3"
   boolean_selector:
     dependency: transitive
     description:

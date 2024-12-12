@@ -1,4 +1,5 @@
 // main.dart
+import 'package:background_mode_new/background_mode_new.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_sms_listener/flutter_sms_listener.dart';
 import 'package:permission_handler/permission_handler.dart';
@@ -49,6 +50,10 @@ class _HomePageState extends State<HomePage> {
     setState(() {
       _telegramTokenController.text = prefs.getString('telegram_token') ?? '';
       _telegramChatIdController.text =  prefs.getString('telegram_chat_id') ?? '';
+      _isServiceEnabled=prefs.getBool("serviceStatus")??false;
+      if(_isServiceEnabled){
+        BackgroundMode.start();
+      }
     });
 
     // Initialize SMS listener
@@ -148,6 +153,13 @@ class _HomePageState extends State<HomePage> {
   void _toggleService() {
     setState(() {
       _isServiceEnabled = !_isServiceEnabled;
+      if(_isServiceEnabled){
+        BackgroundMode.start();
+        prefs.setBool("serviceStatus", true);
+      }else{
+        BackgroundMode.disable();
+        prefs.setBool("serviceStatus", false);
+      }
     });
   }
 
